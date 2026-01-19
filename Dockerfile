@@ -1,0 +1,13 @@
+FROM node:24-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --production
+
+COPY src ./src
+COPY .env .env
+
+EXPOSE 3000
+
+CMD ["node", "src/server.js"]
